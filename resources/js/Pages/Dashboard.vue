@@ -21,7 +21,7 @@ const columnDefs = [
         sortable: true,
         filter: true,
         width: 250,
-        valueFormatter: params => `${params.data.second_name}, ${params.data.first_name}`,
+        valueGetter: params => `${params.data.second_name}, ${params.data.first_name}`,
     },
     {
         headerName: 'Address',
@@ -83,7 +83,6 @@ const gridReady = params => {
     fetch('/api/declarations')
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         gridApi.applyTransaction({
             add: data,
             addIndex: 0,
